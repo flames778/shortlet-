@@ -1,0 +1,9 @@
+[build]
+builder = "nixpacks"
+buildCommand = "cd shortlet-platform && mvn clean package -DskipTests"
+
+[deploy]
+startCommand = "java -jar shortlet-platform/target/app.jar"
+healthcheckPath = "/"
+healthcheckTimeout = 100
+restartPolicyType = "on_failure"
