@@ -1,0 +1,8 @@
+target/
+data/
+tomcat.*/
+.DS_Store
+*.log
+*.class
+.vscode/
+.idea/

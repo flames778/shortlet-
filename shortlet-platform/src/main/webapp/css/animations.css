@@ -1,0 +1,240 @@
+/* ==========================================
+   SHORTLET PREMIUM ANIMATIONS DESIGN SYSTEM
+   ========================================== */
+
+/* Page Smooth Fade-in on Initial Load */
+body {
+    opacity: 0;
+    animation: pageFadeIn 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+@keyframes pageFadeIn {
+    to { opacity: 1; }
+}
+
+/* Scroll-triggered reveal effect (fade up) */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1), 
+                transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform, opacity;
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hero Background Bed Picture Styling */
+.hero {
+    position: relative;
+    min-height: 86vh;
+    overflow: hidden;
+    z-index: 1;
+    background-image: url('../images/bed-picture.jpg') !important;
+    background-size: cover !important;
+    background-position: center !important;
+}
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(4, 18, 33, 0.90), rgba(4, 18, 33, 0.45));
+    z-index: -1;
+}
+
+/* Canvas Particles Layer */
+#particles-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Floating Stat/Search Card Shimmer */
+.hero .card {
+    border: none !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.hero .card:hover {
+    transform: translateY(-4px);
+}
+
+/* Call-To-Action Glowing Pulse effect */
+.btn-glow {
+    position: relative;
+    overflow: hidden;
+    animation: btnPulse 2.2s infinite;
+    box-shadow: 0 0 0 0 rgba(22, 199, 154, 0.7);
+}
+@keyframes btnPulse {
+    0% { box-shadow: 0 0 0 0 rgba(22, 199, 154, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(22, 199, 154, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(22, 199, 154, 0); }
+}
+
+/* Custom Card 3D Lift Hover Tilt effect */
+.card-hover {
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+                box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform, box-shadow;
+}
+.card-hover:hover {
+    transform: translateY(-10px) scale(1.025);
+    box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.15) !important;
+}
+
+/* Typewriter Container & Text */
+.typewriter-container {
+    display: inline-block;
+    max-width: 100%;
+    overflow: visible !important;
+    text-align: center;
+    margin: 0 auto;
+}
+.typewriter-text {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: visible !important;
+    color: #ffffff;
+}
+.typewriter-cursor {
+    display: inline-block;
+    width: 3px;
+    margin-left: 5px;
+    background-color: #16c79a;
+    color: #16c79a;
+    animation: typewriterBlink 0.8s step-end infinite;
+}
+@keyframes typewriterBlink {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
+}
+.single-line-headline {
+    white-space: nowrap;
+    overflow: visible !important;
+    scrollbar-width: thin;
+}
+@media (max-width: 768px) {
+    .typewriter-text {
+        white-space: normal;
+        word-break: break-word;
+    }
+}
+@media (max-width: 480px) {
+    .single-line-headline {
+        white-space: normal !important;
+        word-break: break-word !important;
+        overflow: visible !important;
+    }
+    .typewriter-text {
+        white-space: normal !important;
+        word-break: break-word !important;
+        overflow: visible !important;
+    }
+}
+
+/* Micro-interactions on form inputs */
+.form-control, .form-select {
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    border: 1.5px solid #e2e8f0 !important;
+    border-radius: 8px !important;
+}
+.form-control:focus, .form-select:focus {
+    border-color: #16c79a !important;
+    box-shadow: 0 0 0 4px rgba(22, 199, 154, 0.18) !important;
+    transform: translateY(-1px);
+}
+
+/* Loading Skeleton Shimmer Placeholder */
+.skeleton {
+    background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+    background-size: 200% 100%;
+    animation: shimmerEffect 1.6s infinite linear;
+}
+@keyframes shimmerEffect {
+    to { background-position: -200% 0; }
+}
+
+/* Reduced Motion Compatibility */
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    .btn-glow {
+        animation: none !important;
+    }
+    .card-hover:hover {
+        transform: none !important;
+        box-shadow: none !important;
+    }
+    body {
+        animation: none !important;
+        opacity: 1 !important;
+    }
+    .hero-video {
+        display: none !important;
+    }
+    .hero-video-container {
+        background-image: url('../images/apartment-fallback.jpg') !important;
+        background-size: cover !important;
+        background-position: center !important;
+    }
+}
+
+/* Premium Glassmorphic Login Styles */
+.login-background {
+    background-image: url('https://i.ytimg.com/vi/fW79Dxnv1oY/maxresdefault.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: overlay;
+    background-color: rgba(4, 18, 33, 0.55); /* High-contrast overlay matching shortlet palette */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+}
+
+.login-card {
+    background: rgba(4, 18, 33, 0.45) !important; /* Semi-transparent base */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 24px;
+    width: 100%;
+    max-width: 440px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    text-align: center;
+}
+
+.back-to-home-link:hover {
+    color: #16c79a !important;
+}
+
+.login-card .form-control {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: #ffffff !important;
+    border-radius: 8px !important;
+    transition: all 0.3s ease;
+}
+
+.login-card .form-control:focus {
+    border-color: #16c79a !important;
+    box-shadow: 0 0 0 4px rgba(22, 199, 154, 0.25) !important;
+    background-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+.login-card .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.4) !important;
+}
